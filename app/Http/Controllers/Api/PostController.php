@@ -17,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(20);
+        $posts = Post::inRandomOrder()->paginate(20);
         return response()->json(
                 [
                     'success' => true,

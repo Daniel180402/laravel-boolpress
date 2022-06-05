@@ -14,7 +14,7 @@
 
     </head>
     <body>
-            <div class="guest-home">
+            {{-- <div class="guest-home">
                 <div class="flex-center position-ref full-height">
                     @if (Route::has('login'))
                         <div class="top-right links">
@@ -31,7 +31,7 @@
                         </div>
                     @endif
 
-                    {{-- <div class="content">
+                    <div class="content">
                         <div class="title">
                             @if (Auth::check())
                                     Benvenut* {{ucwords(Auth::user()['name'])}}
@@ -43,9 +43,9 @@
 
                         <div class="links">
                         </div>
-                    </div> --}}
+                    </div>
                 </div>
-            </div>
+            </div> --}}
             <div id="root"></div>
     <script src="{{ asset('js/front.js') }}" ></script>
     </body>
