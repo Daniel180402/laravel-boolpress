@@ -34,4 +34,4 @@ Route::middleware('auth')
     Route::resource('categories', 'CategoryController');
 });
 //sempre dopo mai prima, sovvrascrive
-Route::get('{any}', 'Guest\HomeController@index')->where('any', '.*');
+Route::get('/', 'Guest\HomeController@index');
