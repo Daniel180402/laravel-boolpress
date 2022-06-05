@@ -18,7 +18,7 @@ import App from "./views/App.vue";
 Vue.use(VueRouter);
 
 import Home from "./pages/Home";
-import PostsList from "./pages/PostsList";
+import Posts from "./pages/Posts";
 import AboutUs from "./pages/AboutUs";
 
 const router = new VueRouter({
@@ -30,9 +30,9 @@ const router = new VueRouter({
             component: Home,
         },
         {
-            path: "/post-list",
-            name: "posts-list",
-            component: PostsList,
+            path: "/posts",
+            name: "posts",
+            component: Posts,
         },
         {
             path: "/about-us",
