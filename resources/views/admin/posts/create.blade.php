@@ -4,23 +4,14 @@
 
 @section('content')
 
-<form action="{{route('admin.posts.store')}}" method='post' class="my-height">
+<form action="{{route('admin.posts.store')}}" method='post' class="my-height" enctype="multipart/form-data">
 @csrf
         <div class="container h-100 ">
             <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-12">
-                    <label for="image_url" class="size-label">Image URL</label>
-                    <input type="text" class="m-3" name="image_url">
-                    @error('image_url')
-                        <span class="alert alert-danger">
-                            {{ $message }}
-                        </span>
-                    @enderror
-                </div>
-                <div class="col-12">
-                    <label for="author" class="size-label"></label>
-                    <input type="text" class="m-3" name="author">
-                    @error('author')
+                    <label for="image" class="size-label">Image URL</label>
+                    <input type="file" class="m-3" name="image" id="image">
+                    @error('image')
                         <span class="alert alert-danger">
                             {{ $message }}
                         </span>

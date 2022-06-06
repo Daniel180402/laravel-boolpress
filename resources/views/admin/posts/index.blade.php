@@ -14,7 +14,11 @@
             <a class="text-decoration-none text-black" href="{{route('admin.posts.show', $post)}}">
                 <div class="col">
                     <div class="card h-100">
-                        <img src="{{$post->image_url}}" class="card-img-top" alt="{{$post->title}}">
+                        @if(str_starts_with($post->image_url, 'https://') || str_starts_with($post->image_url, 'http://'))
+                    <img class="rounded w-100" src="{{ $post->image_url }}" alt="image of {{$post->title}}">
+                    @else
+                    <img class="rounded w-100" src="{{ asset('/storage') . '/' . $post->image_url }}" alt="image of {{$post->title}}">
+                    @endif
                     <div class="card-body">
                         <h5 class="card-title">{{$post->title}}</h5>
                         <p class="card-text">{{$post->content}}</p>

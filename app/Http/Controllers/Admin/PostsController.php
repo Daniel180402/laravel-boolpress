@@ -4,7 +4,9 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 use App\Model\Post;
 use App\User;
 
@@ -45,7 +47,7 @@ class PostsController extends Controller
         $request->validate([
             'title'=>'required|min:3|max:20',
             'content'=>'required|min:3|max:200',
-            'author'=>'required',
+            /* 'author'=>'required', */
         ],
         [
             'required' => "Non puoi aggiungere un Comic senza :attribute",
@@ -55,10 +57,12 @@ class PostsController extends Controller
 
         );
 
+        $data['user_id'] = Auth::user()->id;
+        /* $data['slug'] = Str::slug($data['title'], '-'); */
         $newPost = new Post();
         $newPost->title = $data["title"];
-        $newPost->author = $data["author"];
-        $newPost->image_url = $data["image_url"];
+        /* $newPost->author = $data["author"]; */
+        $newPost->image_url = Storage::put('uploads', $data['image']);
         $newPost->content = $data["content"];
         $newPost->slug = $data['title'];
 
@@ -103,7 +107,7 @@ class PostsController extends Controller
     {
         $data = $request-> all();
         $post->title = $data['title'];
-        $post->author = $data['author'];
+        /* $post->author = $data['author']; */
         $post->image_url = $data['image_url'];
         $post->content = $data['content'];
         $post->save();

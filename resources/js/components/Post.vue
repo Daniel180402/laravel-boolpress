@@ -27,4 +27,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.card {
+    width: 25vw;
+}
+</style>
