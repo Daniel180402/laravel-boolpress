@@ -33,5 +33,10 @@ Route::middleware('auth')
     Route::resource('posts', 'PostsController');
     Route::resource('categories', 'CategoryController');
 });
+
+Route::get('/contacts', 'Guest\ContactsController@contact')->name('guest.contact');
+Route::post('/contacts', 'Guest\ContactsController@mailSend')->name('guest.sendMail');
+Route::get('/thanks', 'Guest\ContactsController@thanks')->name('guest.thanks');
+
 //sempre dopo mai prima, sovvrascrive
 Route::get('/{any}', 'Guest\HomeController@index')->where('any','.*');
